@@ -1,10 +1,11 @@
+blinker==1.4
 chumpy
 imageio
 jpeg4py
 joblib
 kornia
 loguru
-numpy==1.26.0
+numpy==1.24.1
 omegaconf==2.0.6
 opencv-python
 open3d
