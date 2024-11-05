@@ -7,8 +7,10 @@ RUN apt update && apt install wget zip unzip
 COPY ./requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-ENV PYTHONPATH=$PYTHONPATH:$(pwd)/attributes/
-ENV CUDA_SAMPLES_INC=$(pwd)/include
+ENV PYTHONPATH=$PYTHONPATH:/app/attributes/
+# ENV CUDA_SAMPLES_INC=/app/include
+# ENV EGL_DEVICE_ID=1
+# ENV
 
 RUN cd ./attributes && python setup.py install
 RUN cd ./mesh-mesh-intersection && python setup.py install
@@ -21,6 +23,6 @@ RUN cd ./data && \
 
 FROM dev
 
-RUN apt update && apt install -y libusb-1.0-0-dev libglfw3-dev libgles2-mesa-dev libglib2.0-0 libturbojpeg
+RUN apt update && apt install -y libglfw3-dev libgles2-mesa-dev libglib2.0-0 libturbojpeg
 
 CMD tail -f /dev/null
