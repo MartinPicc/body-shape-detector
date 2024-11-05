@@ -14,6 +14,7 @@ ENV EGL_DEVICE_ID=1
 
 COPY . .
 RUN cd ./attributes && python setup.py install
+ARG TORCH_CUDA_ARCH_LIST="3.7;5.0;6.0;7.0;7.5;8.0;8.6;9.0+PTX"
 RUN cd ./mesh-mesh-intersection && python setup.py install
 
 ARG shapy_usr
