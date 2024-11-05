@@ -7,11 +7,12 @@ RUN apt update && apt install -y wget zip unzip libturbojpeg libglfw3-dev libgle
 COPY ./requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-ENV PYTHONPATH=$PYTHONPATH:/app/attributes/
+ENV PYTHONPATH="$PYTHONPATH:/app/attributes/"
 ENV EGL_DEVICE_ID=1
 # ENV CUDA_SAMPLES_INC=/app/include
 # ENV
 
+COPY . .
 RUN cd ./attributes && python setup.py install
 RUN cd ./mesh-mesh-intersection && python setup.py install
 
