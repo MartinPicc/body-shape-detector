@@ -4,12 +4,13 @@ WORKDIR /app
 
 RUN apt update \
   && apt install -y --no-install-recommends wget zip unzip libturbojpeg libglfw3-dev libgles2-mesa-dev ninja-build \
-  && rm -rf /var/lib/apt/lists/*
+  && apt clean \
+  rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 COPY ./requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-ENV PYTHONPATH="$PYTHONPATH:/app/attributes/"
+ENV PYTHONPATH="${PYTHONPATH}:/app/attributes/"
 ENV EGL_DEVICE_ID=1
 # ENV CUDA_SAMPLES_INC=/app/include
 # ENV
