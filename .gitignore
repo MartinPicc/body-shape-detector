@@ -9,6 +9,7 @@ regressor/data
 samples/shapy_fit/
 data_old/
 data/**
+!data/download_models.sh
 hparams.yaml
 lightning_logs/
 condor/
