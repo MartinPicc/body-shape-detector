@@ -5,7 +5,7 @@ WORKDIR /app
 RUN apt update \
   && apt install -y --no-install-recommends wget zip unzip libturbojpeg libglfw3-dev libgles2-mesa-dev ninja-build \
   && apt clean \
-  rm -rf /var/lib/{apt,dpkg,cache,log}/
+  && rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 COPY ./requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt

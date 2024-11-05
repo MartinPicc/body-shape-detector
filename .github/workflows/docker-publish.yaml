@@ -45,7 +45,6 @@ jobs:
           sudo swapoff -a
           sudo rm -rf /swapfile /usr/share/dotnet /usr/local/lib/android
           cd /opt && find . -maxdepth 1 -mindepth 1 '!' -path ./containerd '!' -path ./actionarchivecache '!' -path ./runner '!' -path ./runner-cache -exec rm -rf '{}' ';'
-
           sudo apt clean
           df -h
 
