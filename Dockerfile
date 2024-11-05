@@ -15,10 +15,12 @@ RUN cd ./mesh-mesh-intersection && python setup.py install
 
 ARG shapy_usr
 ARG shapy_pwd
-RUN ./download_models.sh $shapy_usr $shapy_pwd
+RUN cd ./data && \
+  chmod +x ./download_models.sh \
+  && ./download_models.sh "$shapy_usr" "$shapy_pwd"
 
 FROM dev
 
-RUN apt update && apt install libglib2.0-0 libturbojpeg
+RUN apt update && apt install -y libusb-1.0-0-dev libglfw3-dev libgles2-mesa-dev libglib2.0-0 libturbojpeg
 
 CMD tail -f /dev/null
