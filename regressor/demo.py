@@ -303,7 +303,7 @@ def main(
                     out_img[key] = out_img[key][:, :, ::-1, :]
 
         stage_n_out = model_output['stage_02']
-        #  logger.info(stage_n_out.keys())
+        logger.info(stage_n_out["measurements"])
         for idx in tqdm(range(len(body_targets)), 'Saving ...'):
             fname = body_targets[idx].get_field('fname')
 
