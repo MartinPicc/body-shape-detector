@@ -35,7 +35,6 @@ RUN chmod +x ./install_openpose.sh \
   && ./install_openpose.sh
 
 # ENV
-
 ENV PYTHONPATH="${PYTHONPATH}:/app/shapy/attributes/:/app/shapy/regressor"
 ENV EGL_DEVICE_ID=1
 ENV SHAPY_DIR=${DIR}/shapy
