@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Check if parameters are set
 if [[ -z "$1" || -z "$2" || -z "$2" ]]; then
   echo "Usage: $0 <path> <shapy_path> <openpose_path>"
