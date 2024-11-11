@@ -1,6 +1,6 @@
 FROM runpod/pytorch:2.1.0-py3.10-cuda11.8.0-devel-ubuntu22.04
 
-ARG DIR /app
+ARG DIR=/app
 WORKDIR ${DIR}
 
 # install external dependencies
@@ -30,16 +30,17 @@ RUN cd ./shapy/data \
   && ./download_models.sh "$shapy_usr" "$shapy_pwd"
 
 # Install OpenPose and models
+COPY ./install_openpose.sh .
 RUN chmod +x ./install_openpose.sh \
   && ./install_openpose.sh
 
 # ENV
 
-ENV PYTHONPATH "${PYTHONPATH}:/app/shapy/attributes/:/app/shapy/regressor"
-ENV EGL_DEVICE_ID 1
-ENV SHAPY_DIR ${DIR}/shapy
-ENV OPENPOSE_DIR ${DIR}/openpose
-ENV TEMP_DIR ${DIR}/temp
+ENV PYTHONPATH="${PYTHONPATH}:/app/shapy/attributes/:/app/shapy/regressor"
+ENV EGL_DEVICE_ID=1
+ENV SHAPY_DIR=${DIR}/shapy
+ENV OPENPOSE_DIR=${DIR}/openpose
+ENV TEMP_DIR=${DIR}/temp
 
 # CMD tail -f /dev/null
 CMD python -u ${DIR}/api/main.py
