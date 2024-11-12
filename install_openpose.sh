@@ -1,8 +1,10 @@
 #!/bin/bash
 # Download and install OpenPose
+set -e
 
 # clone repo
 git clone -q --depth 1 https://github.com/CMU-Perceptual-Computing-Lab/openpose.git
+cd openpose && rm -rf build || true && mkdir build && cd build && cmake -DBUILD_PYTHON=ON .. && make -j`nproc`
 
 # download models and extract
 wget --progress=dot:giga 'https://drive.usercontent.google.com/download?id=1QCSxJZpnWvM00hx49CJ2zky7PWGzpcEh&export=download&authuser=0&confirm=t&uuid=049ae68b-ace5-4b2d-b813-308d8d8c2361&at=AENtkXYDlTLPUckKTkfNsT-ivbYB%3A1731252327225' -O 'models.zip' --continue

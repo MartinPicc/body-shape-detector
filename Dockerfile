@@ -42,7 +42,7 @@ ENV PYTHONPATH="${PYTHONPATH}:/app/shapy/attributes/:/app/shapy/regressor"
 ENV EGL_DEVICE_ID=1
 ENV SHAPY_DIR=${DIR}/shapy
 ENV OPENPOSE_DIR=${DIR}/openpose
-ENV API_DIR=${DIR}/api
+ENV API_DIR=${DIR}/shapy/regressor
 ENV TEMP_DIR=${DIR}/temp
 
 # CMD tail -f /dev/null
