@@ -34,9 +34,6 @@ COPY ./install_openpose.sh .
 RUN chmod +x ./install_openpose.sh \
   && ./install_openpose.sh
 
-# copy API folder
-COPY ./api ./api
-
 # ENV
 ENV PYTHONPATH="${PYTHONPATH}:/app/shapy/attributes/:/app/shapy/regressor"
 ENV EGL_DEVICE_ID=1
