@@ -7,13 +7,13 @@ git clone -q --depth 1 https://github.com/CMU-Perceptual-Computing-Lab/openpose.
 cd openpose && rm -rf build || true && mkdir build && cd build && cmake -DBUILD_PYTHON=ON .. && make -j`nproc`
 
 # download models and extract
-wget --progress=dot:giga 'https://drive.usercontent.google.com/download?id=1QCSxJZpnWvM00hx49CJ2zky7PWGzpcEh&export=download&authuser=0&confirm=t&uuid=049ae68b-ace5-4b2d-b813-308d8d8c2361&at=AENtkXYDlTLPUckKTkfNsT-ivbYB%3A1731252327225' -O 'models.zip' --continue
-unzip models.zip
-mv models/pose/body_25/pose_iter_584000.caffemodel ./models/pose/body_25/pose_iter_584000.caffemodel
-mv models/face/pose_iter_116000.caffemodel ./models/face/pose_iter_116000.caffemodel
-mv models/hand/pose_iter_102000.caffemodel ./models/hand/pose_iter_102000.caffemodel
-rm models.zip
-rm -rf models
+wget --progress=dot:giga 'https://drive.usercontent.google.com/download?id=1QCSxJZpnWvM00hx49CJ2zky7PWGzpcEh&export=download&authuser=0&confirm=t&uuid=049ae68b-ace5-4b2d-b813-308d8d8c2361&at=AENtkXYDlTLPUckKTkfNsT-ivbYB%3A1731252327225' -O 'openpose_models.zip' --continue
+unzip openpose_models.zip -d openpose_models
+mv ./openpose_models/models/pose/body_25/pose_iter_584000.caffemodel ./models/pose/body_25/pose_iter_584000.caffemodel
+mv ./openpose_models/models/face/pose_iter_116000.caffemodel ./models/face/pose_iter_116000.caffemodel
+mv ./openpose_models/models/hand/pose_iter_102000.caffemodel ./models/hand/pose_iter_102000.caffemodel
+rm openpose_models.zip
+rm -rf openpose_models
 
 # set up python path
 # export PYTHONPATH=$PYTHONPATH:/workspace/openpose/build/python
